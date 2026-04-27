@@ -5,9 +5,9 @@ import { useEffect, useState } from 'react';
 const navItems = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
+  { label: 'Services', href: '#services' },
   { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
 ] as const;
 
 function MenuIcon() {
@@ -112,6 +112,12 @@ export default function Navbar() {
                 </a>
               );
             })}
+            <a
+              href='#contact'
+              className='ml-2 inline-flex items-center gap-1.5 rounded-lg bg-neutral-950 px-3.5 py-2 text-sm font-medium text-white hover:bg-neutral-800 transition-colors shadow-sm'>
+              Hire me
+              <span aria-hidden>→</span>
+            </a>
           </nav>
 
           <button
@@ -139,6 +145,12 @@ export default function Navbar() {
                 {item.label}
               </a>
             ))}
+            <a
+              href='#contact'
+              onClick={() => setOpen(false)}
+              className='mt-2 inline-flex items-center justify-center gap-1.5 rounded-lg bg-neutral-950 px-3 py-3.5 min-h-11 text-sm font-medium text-white hover:bg-neutral-800 transition-colors'>
+              Hire me <span aria-hidden>→</span>
+            </a>
           </nav>
         </div>
       )}

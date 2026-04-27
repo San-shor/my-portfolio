@@ -1,15 +1,23 @@
-const coreSkills = [
-  'React',
-  'Next.js',
-  'TypeScript',
-  'JavaScript',
-  'Node.js',
-  'Tailwind CSS',
-  'MongoDB',
-  'MySQL',
-  'Express',
-  'React Native',
-] as const;
+const skillGroups = [
+  {
+    label: 'Frontend',
+    items: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'React Native'],
+  },
+  {
+    label: 'Backend',
+    items: ['Node.js', 'Express', 'MongoDB', 'MySQL'],
+  },
+  {
+    label: 'Tooling & practices',
+    items: ['Unit testing', 'Git', 'REST APIs', 'Responsive design', 'Accessibility'],
+  },
+];
+
+const stats = [
+  { value: '1+', label: 'Years of professional experience' },
+  { value: '6+', label: 'Shipped projects' },
+  { value: 'CSE', label: 'B.Sc. — East West University' },
+];
 
 export default function About() {
   return (
@@ -35,73 +43,98 @@ export default function About() {
               </span>
             </div>
             <h2 className='text-[clamp(1.625rem,5vw,3.25rem)] font-semibold tracking-[-0.03em] text-neutral-950 leading-[1.08] text-balance'>
-              Software engineer focused on the frontend
+              A frontend-focused engineer who cares about the details
             </h2>
           </div>
           <div className='lg:flex-1 lg:max-w-md min-w-0 lg:pt-2 lg:border-l lg:border-neutral-200 lg:pl-8 xl:pl-10'>
             <p className='text-sm sm:text-base md:text-[17px] text-neutral-600 leading-relaxed text-pretty'>
-              I build interfaces with React and Next.js, care about tests, and
-              ship work that stays maintainable as products grow.
+              I build interfaces with React and Next.js, write unit tests, and
+              ship work that stays maintainable as products grow. I value clear
+              communication, thoughtful design, and code that&apos;s easy for
+              the next person to read.
             </p>
           </div>
         </div>
 
-        {/* Profile */}
-        <div className='w-full max-w-3xl min-w-0'>
-          <div className='flex flex-col rounded-[1.25rem] border border-neutral-200/90 bg-white px-4 py-7 sm:px-7 sm:py-8 md:px-9 md:py-10 shadow-[0_1px_0_0_rgba(10,10,10,0.04)]'>
-            <p className='text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-400 mb-5 sm:mb-6'>
-              Profile
-            </p>
-            <div className='border-l-[3px] border-neutral-950 pl-4 sm:pl-6 md:pl-8'>
-              <p className='text-sm sm:text-[15px] md:text-[17px] leading-[1.75] text-neutral-600 text-pretty'>
-                I hold a{' '}
-                <strong className='font-semibold text-neutral-950'>
-                  B.Sc. in Computer Science and Engineering
-                </strong>{' '}
-                from East West University. At{' '}
-                <strong className='font-semibold text-neutral-950'>
-                  SELISE Digital Platforms
-                </strong>
-                , I worked as a software intern and then as an associate
-                software engineer—mainly{' '}
-                <strong className='font-semibold text-neutral-950'>
-                  frontend development
-                </strong>{' '}
-                and{' '}
-                <strong className='font-semibold text-neutral-950'>
-                  unit testing
-                </strong>
-                .
+        <div className='grid grid-cols-1 lg:grid-cols-5 gap-5 sm:gap-6 items-stretch'>
+          {/* Profile */}
+          <div className='lg:col-span-3 min-w-0'>
+            <div className='h-full flex flex-col rounded-[1.25rem] border border-neutral-200/90 bg-white px-4 py-7 sm:px-7 sm:py-8 md:px-9 md:py-10 shadow-[0_1px_0_0_rgba(10,10,10,0.04)]'>
+              <p className='text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-400 mb-5 sm:mb-6'>
+                Profile
               </p>
-            </div>
-          </div>
-        </div>
+              <div className='border-l-[3px] border-neutral-950 pl-4 sm:pl-6 md:pl-8'>
+                <p className='text-sm sm:text-[15px] md:text-[17px] leading-[1.75] text-neutral-600 text-pretty'>
+                  I hold a{' '}
+                  <strong className='font-semibold text-neutral-950'>
+                    B.Sc. in Computer Science and Engineering
+                  </strong>{' '}
+                  from East West University. At{' '}
+                  <strong className='font-semibold text-neutral-950'>
+                    SELISE Digital Platforms
+                  </strong>
+                  , I worked as a software intern and then as an associate
+                  software engineer — focused on{' '}
+                  <strong className='font-semibold text-neutral-950'>
+                    frontend development
+                  </strong>{' '}
+                  and{' '}
+                  <strong className='font-semibold text-neutral-950'>
+                    unit testing
+                  </strong>
+                  . Today I work with clients to design and ship modern web
+                  apps end-to-end.
+                </p>
+              </div>
 
-        {/* Stack */}
-        <div className='mt-4 sm:mt-5 lg:mt-6 rounded-[1.25rem] border border-neutral-200 bg-white/80 backdrop-blur-sm px-4 py-7 sm:px-6 sm:py-8 md:px-8 md:py-9'>
-          <div className='flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-4 mb-5 sm:mb-6'>
-            <div className='flex items-center gap-3'>
-              <span className='font-mono text-[11px] tabular-nums text-neutral-400'>
-                02
-              </span>
-              <span className='h-px w-8 bg-neutral-200 shrink-0' aria-hidden />
-              <h3 className='text-[11px] font-semibold uppercase tracking-[0.22em] text-neutral-500'>
-                Stack
-              </h3>
+              <dl className='mt-7 sm:mt-8 grid grid-cols-3 gap-4 sm:gap-6 border-t border-neutral-200 pt-6 sm:pt-7'>
+                {stats.map((stat) => (
+                  <div key={stat.label} className='min-w-0'>
+                    <dt className='order-2 mt-1 text-[11px] sm:text-xs text-neutral-500 leading-snug text-pretty'>
+                      {stat.label}
+                    </dt>
+                    <dd className='order-1 text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight text-neutral-950 tabular-nums'>
+                      {stat.value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
             </div>
-            <p className='text-xs text-neutral-400 sm:ml-auto'>
-              Tools I use most often
-            </p>
           </div>
-          <ul className='flex flex-wrap gap-2 sm:gap-2.5'>
-            {coreSkills.map((skill) => (
-              <li key={skill}>
-                <span className='inline-flex min-h-9 items-center rounded-lg border border-neutral-200 bg-neutral-50 px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-neutral-900 transition-colors duration-200 hover:border-neutral-950 hover:bg-neutral-950 hover:text-white'>
-                  {skill}
+
+          {/* Stack */}
+          <div className='lg:col-span-2 min-w-0'>
+            <div className='h-full rounded-[1.25rem] border border-neutral-200 bg-white px-4 py-7 sm:px-6 sm:py-8 md:px-7 md:py-9'>
+              <div className='flex items-center gap-3 mb-5 sm:mb-6'>
+                <span className='font-mono text-[11px] tabular-nums text-neutral-400'>
+                  02
                 </span>
-              </li>
-            ))}
-          </ul>
+                <span className='h-px w-8 bg-neutral-200 shrink-0' aria-hidden />
+                <h3 className='text-[11px] font-semibold uppercase tracking-[0.22em] text-neutral-500'>
+                  Stack
+                </h3>
+              </div>
+
+              <div className='space-y-5 sm:space-y-6'>
+                {skillGroups.map((group) => (
+                  <div key={group.label}>
+                    <p className='text-xs font-semibold text-neutral-700 mb-2.5'>
+                      {group.label}
+                    </p>
+                    <ul className='flex flex-wrap gap-1.5 sm:gap-2'>
+                      {group.items.map((skill) => (
+                        <li key={skill}>
+                          <span className='inline-flex items-center rounded-lg border border-neutral-200 bg-neutral-50 px-2.5 py-1.5 text-xs font-medium text-neutral-900 transition-colors duration-200 hover:border-neutral-950 hover:bg-neutral-950 hover:text-white'>
+                            {skill}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
